@@ -1,0 +1,205 @@
+/* Global Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #f7f7f7; /* Light grayish background */
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  flex-direction: column;
+}
+
+/* Header */
+h1 {
+  font-size: 3rem;
+  color: #009688; /* Light teal for a calming effect */
+  margin-bottom: 30px;
+  font-weight: 600;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Form section */
+div {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 10px;
+  color: #009688; /* Light teal */
+  display: block;
+}
+
+/* Input fields */
+input[type="number"],
+input[type="text"] {
+  padding: 12px;
+  margin: 5px 0;
+  width: 300px; /* Center the input fields */
+  border: 1px solid #009688; /* Light teal border */
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus {
+  background-color: #e0f2f1; /* Light teal background on focus */
+  outline: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Buttons */
+button {
+  padding: 12px 24px;
+  margin: 10px;
+  background-color: #ff4081; /* Soft pink */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 250px; /* Center the buttons */
+}
+
+button:hover {
+  background-color: #f50057; /* Darker pink on hover */
+  transform: translateY(-2px);
+}
+
+button:active {
+  background-color: #c51162; /* Even darker pink on click */
+  transform: translateY(2px);
+}
+
+/* Chart Area */
+canvas {
+  max-width: 600px;
+  margin: 30px auto;
+  display: block;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%; /* Ensures it adapts to the container width */
+}
+
+/* Summary and Suggestions */
+#summary, #suggestions {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-left: 5px solid #009688; /* Light teal */
+  padding: 20px;
+  margin-top: 40px;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#summary {
+  border-left-color: #009688; /* Light teal */
+}
+
+#suggestions {
+  border-left-color: #ff4081; /* Soft pink */
+  margin-top: 20px;
+}
+
+#suggestions p {
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  input[type="number"],
+  input[type="text"] {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  canvas {
+    max-width: 100%;
+  }
+
+  /* Adjust summary and suggestions layout */
+  #summary, #suggestions {
+    width: 90%;
+  }
+}
+
+/* For extra small devices (like phones in portrait mode) */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+
+  label, button {
+    font-size: 1rem;
+  }
+
+  input[type="number"],
+  input[type="text"] {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  canvas {
+    margin-top: 20px;
+    padding: 15px;
+  }
+
+  /* Adjust summary and suggestions further */
+  #summary, #suggestions {
+    width: 95%;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    padding: 40px;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  input[type="number"],
+  input[type="text"] {
+    width: 300px;
+  }
+
+  button {
+    font-size: 1.4rem;
+  }
+
+  canvas {
+    width: 80%;
+  }
+}

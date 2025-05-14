@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Business AI Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>📊 Business AI Summary</h1>
+
+  <div>
+    <label>Total Revenue: ₹</label>
+    <input type="number" id="revenue">
+  </div>
+
+  <div id="expenses">
+    <h3>Expenses (Add Category + Amount)</h3>
+    <div><input type="text" placeholder="Category" class="cat"><input type="number" placeholder="Amount" class="amt"></div>
+  </div>
+
+  <button onclick="addExpense()">+ Add Expense</button>
+  <button onclick="analyze()">📈 Analyze</button>
+
+  <div>
+    <canvas id="pieChart"></canvas>
+    <canvas id="barChart"></canvas>
+  </div>
+
+  <div id="summary"></div>
+  <div id="suggestions"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+  <script src="groq-api.js"></script>
+</body>
+</html>
