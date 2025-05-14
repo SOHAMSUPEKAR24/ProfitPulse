@@ -8,12 +8,21 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(cors());
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); // Serve frontend
-
 const GROQ_API_KEY = "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";
 
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// ✅ Serve index.html on root route for Railway or any browser access
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Handle suggestions request
 app.post('/api/suggestions', async (req, res) => {
   const { revenue, expenses, profit } = req.body;
 
@@ -31,7 +40,6 @@ Financial Data:
   `;
 
   try {
-    // Updated URL for Groq API
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -39,15 +47,14 @@ Financial Data:
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",  // Correct model based on your previous example
+        model: "llama-3.3-70b-versatile",
         messages: [{ role: "user", content: prompt }]
       })
     });
 
     const data = await response.json();
-    console.log("🧠 Groq API response:", JSON.stringify(data, null, 2)); // ✅ Debug output
+    console.log("🧠 Groq API response:", JSON.stringify(data, null, 2));
 
-    // Check if suggestions are present and return them
     res.json({ suggestions: data.choices?.[0]?.message?.content || "No suggestions from model." });
   } catch (error) {
     console.error("❌ Error from Groq API:", error);
@@ -55,6 +62,8 @@ Financial Data:
   }
 });
 
-app.listen(3000, () => {
-  console.log('✅ Server running on http://localhost:3000');
+// Start server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`✅ Server running on http://localhost:${PORT}`);
 });
